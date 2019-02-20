@@ -3,8 +3,9 @@ package kr.or.ksmart.dataModel.vo;
 public class user {
 	private String userId;
 	private String userPw;
+	private String userName;
 	private String userAddr;
-	private int userPhone;
+	private String userPhone;
 	private int branchNo;
 	public String getUserId() {
 		return userId;
@@ -18,16 +19,22 @@ public class user {
 	public void setUserPw(String userPw) {
 		this.userPw = userPw;
 	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public String getUserAddr() {
 		return userAddr;
 	}
 	public void setUserAddr(String userAddr) {
 		this.userAddr = userAddr;
 	}
-	public int getUserPhone() {
+	public String getUserPhone() {
 		return userPhone;
 	}
-	public void setUserPhone(int userPhone) {
+	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
 	public int getBranchNo() {
@@ -38,9 +45,9 @@ public class user {
 	}
 	@Override
 	public String toString() {
-		return "user [userId=" + userId + ", userPw=" + userPw + ", userAddr=" + userAddr + ", userPhone=" + userPhone
-				+ ", branchNo=" + branchNo + "]";
-	}	
+		return "user [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userAddr=" + userAddr
+				+ ", userPhone=" + userPhone + ", branchNo=" + branchNo + "]";
+	}
 	
 	
 }

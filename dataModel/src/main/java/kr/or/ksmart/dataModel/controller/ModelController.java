@@ -1,12 +1,16 @@
 package kr.or.ksmart.dataModel.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.ksmart.dataModel.service.ModelService;
+
 @Controller
 public class ModelController {
+	@Autowired ModelService modelService;
 	// 1. index(get 방식)
 	@GetMapping("/index")
 	public String user() {
@@ -17,7 +21,7 @@ public class ModelController {
 	public String user(@RequestParam(value="userId")String Id,
 					   @RequestParam(value="userPw")String Pw) {
 		
-		return "Rediect:/";
+		return "Rediect:/user";
 	}
 	
 	// 2. 유저정보(getCustomer) get방식

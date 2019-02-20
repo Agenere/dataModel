@@ -65,8 +65,9 @@ CREATE TABLE IF NOT EXISTS `order` (
 CREATE TABLE IF NOT EXISTS `user` (
   `user_id` varchar(50) NOT NULL,
   `user_pw` varchar(50) DEFAULT NULL,
+  `user_name` varchar(50) DEFAULT NULL,
   `user_addr` varchar(50) DEFAULT NULL,
-  `user_phone` int(10) DEFAULT NULL,
+  `user_phone` varchar(50) DEFAULT NULL,
   `branch_no` int(10) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   KEY `branch_no` (`branch_no`),
