@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.ksmart.model.mapper.AccountMapper">
+	<insert id="insertAccount"
+		parameterType="kr.or.ksmart.model.vo.Account">
+		INSERT INTO account(
+		account_no AS acountNo
+		,user_id AS userId
+		,account_name AS accountName
+		,account_deposit AS accountDeposita
+		,account_open_branch AS accountOpenBranch
+		,account_manager AS accountManager)
+		VALUES(
+		((CONCAT(#{branchNo},(SELECT EXTRACT(DAY_SECOND FROM now())),#{randomNo})))
+		,#{userId}
+		,#{accountName}
+		,#{accountDeposit}
+		,#{accountOpenBranch}
+		,#{accountManager})
+	</insert>
+</mapper>

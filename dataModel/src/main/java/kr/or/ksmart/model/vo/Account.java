@@ -1,8 +1,8 @@
-package kr.or.ksmart.dataModel.vo;
+package kr.or.ksmart.model.vo;
 
 public class Account {
 	private int accountNo ;
-	private String customerId;
+	private String userId;
 	private String accountName;
 	private int deposit;
 	private String accountOpenBranch;
@@ -13,11 +13,11 @@ public class Account {
 	public void setAccountNo(int accountNo) {
 		this.accountNo = accountNo;
 	}
-	public String getCustomerId() {
-		return customerId;
+	public String getUserId() {
+		return userId;
 	}
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getAccountName() {
 		return accountName;
@@ -45,9 +45,8 @@ public class Account {
 	}
 	@Override
 	public String toString() {
-		return "Account [accountNo=" + accountNo + ", customerId=" + customerId + ", accountName=" + accountName
-				+ ", deposit=" + deposit + ", accountOpenBranch=" + accountOpenBranch + ", accountManager="
-				+ accountManager + "]";
+		return "Account [accountNo=" + accountNo + ", userId=" + userId + ", accountName=" + accountName + ", deposit="
+				+ deposit + ", accountOpenBranch=" + accountOpenBranch + ", accountManager=" + accountManager + "]";
 	}
 	
 	

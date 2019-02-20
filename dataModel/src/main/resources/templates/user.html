@@ -5,8 +5,10 @@
 <title>유저 정보</title>
 </head>
 <body>
-정보
-<a th:text="${session.loginUser.userId}"></a>
+환영합니다.<br>
+아이디 :<a th:text="${session.loginUser.userId}"></a><br>
+이   름 :<a th:text="${session.loginUser.userName}"></a><br>
+핸드폰 :<a th:text="${session.loginUser.userPhone}"></a><br>
 <a th:href="@{/logout}" th:text="로그아웃"></a>
 </body>
 </html>

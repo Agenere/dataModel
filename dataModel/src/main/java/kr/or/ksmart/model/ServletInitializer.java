@@ -1,4 +1,4 @@
-package kr.or.ksmart.dataModel;
+package kr.or.ksmart.model;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

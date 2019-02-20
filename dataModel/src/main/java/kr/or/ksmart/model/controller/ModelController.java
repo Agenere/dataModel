@@ -1,15 +1,16 @@
-package kr.or.ksmart.dataModel.controller;
+package kr.or.ksmart.model.controller;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.or.ksmart.dataModel.service.ModelService;
-import kr.or.ksmart.dataModel.vo.User;
+import kr.or.ksmart.model.service.ModelService;
+import kr.or.ksmart.model.vo.User;
 
 @Controller
 public class ModelController {
@@ -24,7 +25,7 @@ public class ModelController {
 	public String index(User user,HttpSession session) {		
 		return modelService.getUser(user, session);
 	}
-	
+	//1-2. logout
 	@GetMapping("logout")
 	public String logout(HttpSession session) {
 		modelService.logout(session);
@@ -37,8 +38,14 @@ public class ModelController {
 		return "user";
 	}
 	// 3. 계좌 개설(getAccount) get 방식
+	@GetMapping("/accountadd")
+	public String accountadd(HttpSession session,Model model) {
+		model.addAttribute("branch",modelService.account(session));
+		return "accountadd";
+	}
 	
 	// 3-1  계좌 개설 action (post방식)
+	//@PostMapping("/accountadd")
 	
 	// 4 주문  get 방식
 	

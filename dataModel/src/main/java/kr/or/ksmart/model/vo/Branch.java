@@ -1,4 +1,4 @@
-package kr.or.ksmart.dataModel.vo;
+package kr.or.ksmart.model.vo;
 
 public class Branch {
 	private int branchNo;

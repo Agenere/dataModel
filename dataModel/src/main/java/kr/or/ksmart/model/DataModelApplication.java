@@ -1,4 +1,4 @@
-package kr.or.ksmart.dataModel;
+package kr.or.ksmart.model;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
