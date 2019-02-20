@@ -4,4 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.ksmart.dataModel.mapper.ModelMapper">
 
+<!-- 로그인 -->
+<select id="selectUser"
+ parameterType="kr.or.ksmart.dataModel.vo.User"
+ resultType="kr.or.ksmart.dataModel.vo.User">
+ SELECT
+ 	 user_id AS userId
+ 	,user_pw AS userPw
+ 	,user_name AS userName
+ 	,user_addr AS userAddr
+ 	,user_phone AS userPhone
+ 	,branch_no AS branchNo
+ 	FROM user
+ 	WHERE user_id=#{userId}
+</select>
+
+<!--  -->
 </mapper>

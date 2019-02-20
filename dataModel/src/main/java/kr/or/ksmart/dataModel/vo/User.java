@@ -1,6 +1,6 @@
 package kr.or.ksmart.dataModel.vo;
 
-public class user {
+public class User {
 	private String userId;
 	private String userPw;
 	private String userName;

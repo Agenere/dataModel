@@ -5,6 +5,8 @@
 <title>유저 정보</title>
 </head>
 <body>
-
+정보
+<a th:text="${session.loginUser.userId}"></a>
+<a th:href="@{/logout}" th:text="로그아웃"></a>
 </body>
 </html>
