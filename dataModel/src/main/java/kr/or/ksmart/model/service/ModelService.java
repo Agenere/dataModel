@@ -1,15 +1,11 @@
 package kr.or.ksmart.model.service;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-
 import kr.or.ksmart.model.mapper.*;
 import kr.or.ksmart.model.vo.*;
 
@@ -40,17 +36,17 @@ public class ModelService {
 	}
 	
 	//계좌 개설 폼용
-	public Branch account(HttpSession session) {
-		User user = (User)session.getAttribute("loginUser");	
-		return branchMapper.selectBranch(user.getBranchNo());
+	public List<Branch> account() {
+		return branchMapper.allSelectBranch();
 	}
 	
 	// 계좌 개설
 	public void accountadd(Account account) {
-		Map<String,Object> map = new HashMap<String,Object>(); 
-		map.put("randomNo", (int)(Math.random()*100)+1);
-		map.put("branchNo", UserMapper.selectUser(account.getUserId()).getBranchNo());
-		map.put("account", account);
-		accountMapper.insertAccount(map);
+		System.out.println("ModelService.java accountadd 실행" );
+		Branch branch = branchMapper.selectBranch(account.getBranchNo());
+		account.setAccountManager(branch.getBranchManager());
+		account.setAccountOpenBranch(branch.getBranchName());
+		System.out.println("ModelService.java = " + account );
+		accountMapper.insertAccount(account);
 	}
 }

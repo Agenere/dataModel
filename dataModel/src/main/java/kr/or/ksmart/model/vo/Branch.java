@@ -1,13 +1,13 @@
 package kr.or.ksmart.model.vo;
 
 public class Branch {
-	private int branchNo;
+	private String branchNo;
 	private String branchName;
 	private String branchManager;
-	public int getBranchNo() {
+	public String getBranchNo() {
 		return branchNo;
 	}
-	public void setBranchNo(int branchNo) {
+	public void setBranchNo(String branchNo) {
 		this.branchNo = branchNo;
 	}
 	public String getBranchName() {

@@ -6,7 +6,7 @@ public class User {
 	private String userName;
 	private String userAddr;
 	private String userPhone;
-	private int branchNo;
+	private String branchNo;
 	public String getUserId() {
 		return userId;
 	}
@@ -37,10 +37,10 @@ public class User {
 	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
-	public int getBranchNo() {
+	public String getBranchNo() {
 		return branchNo;
 	}
-	public void setBranchNo(int branchNo) {
+	public void setBranchNo(String branchNo) {
 		this.branchNo = branchNo;
 	}
 	@Override

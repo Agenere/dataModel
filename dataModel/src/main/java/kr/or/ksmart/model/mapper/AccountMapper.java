@@ -1,11 +1,11 @@
 package kr.or.ksmart.model.mapper;
 
-import java.util.Map;
-
 import org.apache.ibatis.annotations.Mapper;
+
+import kr.or.ksmart.model.vo.Account;
 
 
 @Mapper
 public interface AccountMapper {
-	int insertAccount(Map<String,Object> map);
+	int insertAccount(Account account);
 }

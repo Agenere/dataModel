@@ -2,28 +2,28 @@ package kr.or.ksmart.model.vo;
 
 public class Order {
 	private String orderDate;
-	private int orderNo;
-	private int accountNo;
+	private String orderNo;
+	private String accountNo;
 	private String customerId;
-	private int eventCode;
-	private int count;
-	private int money;
+	private String eventCode;
+	private String count;
+	private String money;
 	public String getOrderDate() {
 		return orderDate;
 	}
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
-	public int getOrderNo() {
+	public String getOrderNo() {
 		return orderNo;
 	}
-	public void setOrderNo(int orderNo) {
+	public void setOrderNo(String orderNo) {
 		this.orderNo = orderNo;
 	}
-	public int getAccountNo() {
+	public String getAccountNo() {
 		return accountNo;
 	}
-	public void setAccountNo(int accountNo) {
+	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
 	}
 	public String getCustomerId() {
@@ -32,22 +32,22 @@ public class Order {
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
-	public int getEventCode() {
+	public String getEventCode() {
 		return eventCode;
 	}
-	public void setEventCode(int eventCode) {
+	public void setEventCode(String eventCode) {
 		this.eventCode = eventCode;
 	}
-	public int getCount() {
+	public String getCount() {
 		return count;
 	}
-	public void setCount(int count) {
+	public void setCount(String count) {
 		this.count = count;
 	}
-	public int getMoney() {
+	public String getMoney() {
 		return money;
 	}
-	public void setMoney(int money) {
+	public void setMoney(String money) {
 		this.money = money;
 	}
 	@Override
@@ -55,7 +55,6 @@ public class Order {
 		return "Order [orderDate=" + orderDate + ", orderNo=" + orderNo + ", accountNo=" + accountNo + ", customerId="
 				+ customerId + ", eventCode=" + eventCode + ", count=" + count + ", money=" + money + "]";
 	}
-	
 	
 
 }

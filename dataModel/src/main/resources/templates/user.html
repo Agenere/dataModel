@@ -9,6 +9,7 @@
 아이디 :<a th:text="${session.loginUser.userId}"></a><br>
 이   름 :<a th:text="${session.loginUser.userName}"></a><br>
 핸드폰 :<a th:text="${session.loginUser.userPhone}"></a><br>
+<a th:href="@{/accountadd}" th:text="계좌개설"></a>
 <a th:href="@{/logout}" th:text="로그아웃"></a>
 </body>
 </html>

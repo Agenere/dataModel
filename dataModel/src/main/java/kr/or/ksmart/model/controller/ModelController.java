@@ -7,9 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import kr.or.ksmart.model.service.ModelService;
+import kr.or.ksmart.model.vo.Account;
 import kr.or.ksmart.model.vo.User;
 
 @Controller
@@ -39,13 +38,20 @@ public class ModelController {
 	}
 	// 3. 계좌 개설(getAccount) get 방식
 	@GetMapping("/accountadd")
-	public String accountadd(HttpSession session,Model model) {
-		model.addAttribute("branch",modelService.account(session));
+	public String accountadd(Model model) {
+		model.addAttribute("branchList",modelService.account());
 		return "accountadd";
 	}
 	
 	// 3-1  계좌 개설 action (post방식)
-	//@PostMapping("/accountadd")
+	@PostMapping("/accontAddAction")
+	public String accontAddAction(Account account) {
+		System.out.println("accontAddAction 실행" );
+		modelService.accountadd(account);
+		
+		return "user";
+		
+	}
 	
 	// 4 주문  get 방식
 	

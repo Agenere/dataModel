@@ -13,4 +13,14 @@
 			FROM branch 
 			WHERE branch_no= #{branchNO}
 </select>
+<select id="allSelectBranch"
+	resultType="kr.or.ksmart.model.vo.Branch">
+			SELECT 
+				branch_no as branchNO, 
+				branch_name as branchName, 
+				branch_manager as branchManager 
+			FROM branch 			
+</select>
+
+
 </mapper>

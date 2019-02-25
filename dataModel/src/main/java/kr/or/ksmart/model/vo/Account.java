@@ -1,16 +1,16 @@
 package kr.or.ksmart.model.vo;
 
-public class Account {
-	private int accountNo ;
+public class Account extends Branch{
+	private String accountNo ;
 	private String userId;
 	private String accountName;
-	private int deposit;
+	private int accountDeposit;
 	private String accountOpenBranch;
 	private String accountManager ;
-	public int getAccountNo() {
+	public String getAccountNo() {
 		return accountNo;
 	}
-	public void setAccountNo(int accountNo) {
+	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
 	}
 	public String getUserId() {
@@ -26,10 +26,10 @@ public class Account {
 		this.accountName = accountName;
 	}
 	public int getDeposit() {
-		return deposit;
+		return accountDeposit;
 	}
 	public void setDeposit(int deposit) {
-		this.deposit = deposit;
+		this.accountDeposit = deposit;
 	}
 	public String getAccountOpenBranch() {
 		return accountOpenBranch;
@@ -46,7 +46,7 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [accountNo=" + accountNo + ", userId=" + userId + ", accountName=" + accountName + ", deposit="
-				+ deposit + ", accountOpenBranch=" + accountOpenBranch + ", accountManager=" + accountManager + "]";
+				+ accountDeposit + ", accountOpenBranch=" + accountOpenBranch + ", accountManager=" + accountManager + "]";
 	}
 	
 	

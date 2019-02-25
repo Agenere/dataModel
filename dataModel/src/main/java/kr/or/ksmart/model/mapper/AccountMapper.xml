@@ -6,14 +6,23 @@
 	<insert id="insertAccount"
 		parameterType="kr.or.ksmart.model.vo.Account">
 		INSERT INTO account(
-		account_no AS acountNo
-		,user_id AS userId
-		,account_name AS accountName
-		,account_deposit AS accountDeposita
-		,account_open_branch AS accountOpenBranch
-		,account_manager AS accountManager)
+		account_no
+		,user_id
+		,account_name 
+		,account_deposit
+		,account_open_branch
+		,account_manager)
 		VALUES(
-		((CONCAT(#{branchNo},(SELECT EXTRACT(DAY_SECOND FROM now())),#{randomNo})))
+		((CONCAT(
+			<!-- 지점 코드 날짜 랜덤숫자 조합을 합하기 -->
+			#{branchNo}
+			,'-'
+			<!-- 날짜 중 시간 분 초 만 추출 한다 -->
+			,(EXTRACT(HOUR_SECOND FROM now()))
+			,'-'
+			<!-- 3자리 랜덤숫자 추출 -->
+			,(CAST((RAND()*899)+100 AS SIGNED)) 
+				) ))
 		,#{userId}
 		,#{accountName}
 		,#{accountDeposit}
