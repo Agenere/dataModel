@@ -29,4 +29,17 @@
 		,#{accountOpenBranch}
 		,#{accountManager})
 	</insert>
+	<select id="selectAccount"
+	parameterType="String"
+	resultType="kr.or.ksmart.model.vo.Account">
+	SELECT 
+		account_no as accountNo
+		,user_id as userId
+		,account_name as accountName
+		,account_deposit as accountDeposit
+		,account_open_branch as accountOpenBranch
+		,account_manager as accountManager
+	 FROM account
+	 WHERE user_id=#{userId}
+	</select>
 </mapper>

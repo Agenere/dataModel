@@ -1,23 +1,23 @@
 package kr.or.ksmart.model.vo;
 
-public class Order {
+public class UserOrder {
 	private String orderDate;
-	private String orderNo;
+	private int orderNo;
 	private String accountNo;
-	private String customerId;
+	private String userId;
 	private String eventCode;
-	private String count;
-	private String money;
+	private String orderCount;
+	private String orderMoney;
 	public String getOrderDate() {
 		return orderDate;
 	}
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
-	public String getOrderNo() {
+	public int getOrderNo() {
 		return orderNo;
 	}
-	public void setOrderNo(String orderNo) {
+	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
 	}
 	public String getAccountNo() {
@@ -26,11 +26,11 @@ public class Order {
 	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
 	}
-	public String getCustomerId() {
-		return customerId;
+	public String getuserId() {
+		return userId;
 	}
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
+	public void setuserId(String userId) {
+		this.userId = userId;
 	}
 	public String getEventCode() {
 		return eventCode;
@@ -39,21 +39,21 @@ public class Order {
 		this.eventCode = eventCode;
 	}
 	public String getCount() {
-		return count;
+		return orderCount;
 	}
 	public void setCount(String count) {
-		this.count = count;
+		this.orderCount = count;
 	}
 	public String getMoney() {
-		return money;
+		return orderMoney;
 	}
 	public void setMoney(String money) {
-		this.money = money;
+		this.orderMoney = money;
 	}
 	@Override
 	public String toString() {
-		return "Order [orderDate=" + orderDate + ", orderNo=" + orderNo + ", accountNo=" + accountNo + ", customerId="
-				+ customerId + ", eventCode=" + eventCode + ", count=" + count + ", money=" + money + "]";
+		return "UserOrder [orderDate=" + orderDate + ", orderNo=" + orderNo + ", accountNo=" + accountNo + ", customerId="
+				+ userId + ", eventCode=" + eventCode + ", count=" + orderCount + ", money=" + orderMoney + "]";
 	}
 	
 

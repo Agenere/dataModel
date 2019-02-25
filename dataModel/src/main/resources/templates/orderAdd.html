@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>주문 폼</title>
+</head>
+
+<body>
+	<form action="/orderAdd" method="post">
+		<table>
+			<tr>
+				<td>계좌번호</td>
+				<td>
+				<select name ="accountNo">
+					<option th:each=" a : ${accountList}" th:value="${a.accountNo}" >[[${a.accountNo}]] 계좌명 [[${a.accountName}]]</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>회원ID</td>
+				<td><input type="text" name="userId" th:value="${session.loginUser.userId}" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<td>종목코드</td>
+				<td>
+					<select name ="eventCode">
+						<option th:value="편의점">편의점</option>
+						<option th:value="음식점">음식점</option>
+						<option th:value="카페">카페</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>수량</td>
+				<td><input type="text" name="count"></td>
+			</tr>
+			<tr>
+				<td>금액</td>
+				<td><input type="text" name="money"><td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="주문완료"></td>
+			</tr>
+		</table>
+	</form>
+</body>
