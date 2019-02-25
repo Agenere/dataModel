@@ -52,7 +52,7 @@ public class ModelService {
 		System.out.println("ModelService.java = " + account );
 		accountMapper.insertAccount(account);
 	}
-	//주문 폼
+	//회원 계좌 리스트 가져오기
 	public List<Account> getAccountOne(HttpSession session) {
 		User user = (User)session.getAttribute("loginUser");
 		System.out.println("getAccountOne="+user);
@@ -63,4 +63,5 @@ public class ModelService {
 	public void orderAction(UserOrder userOrder) {
 		orderMapper.insertOrder(userOrder);
 	}
+
 }

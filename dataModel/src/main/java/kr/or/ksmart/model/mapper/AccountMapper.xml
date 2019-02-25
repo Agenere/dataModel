@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.ksmart.model.mapper.AccountMapper">
+	<!-- 계좌개설 -->
 	<insert id="insertAccount"
 		parameterType="kr.or.ksmart.model.vo.Account">
 		INSERT INTO account(
@@ -29,6 +30,7 @@
 		,#{accountOpenBranch}
 		,#{accountManager})
 	</insert>
+	<!-- 주문 -->
 	<select id="selectAccount"
 	parameterType="String"
 	resultType="kr.or.ksmart.model.vo.Account">

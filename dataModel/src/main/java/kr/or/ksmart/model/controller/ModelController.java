@@ -75,11 +75,13 @@ public class ModelController {
 		
 	}
 	// 5. 계좌 리스트(get 방식)
-	@GetMapping("")
-	public String accountList() {
-		return null;
+	@GetMapping("/listAccount")
+	public String listAccount(HttpSession session,Model model) {
+		List<Account> accountList = modelService.getAccountOne(session);
+		System.out.println("orderAdd = "+accountList);
+		model.addAttribute("accountList",accountList);
+		return "listAccount";
 		
 	}
-	
 	// 6. 주문 List(get 방식)
 }

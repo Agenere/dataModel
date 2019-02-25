@@ -4,7 +4,7 @@ public class Account extends Branch{
 	private String accountNo ;
 	private String userId;
 	private String accountName;
-	private int accountDeposit;
+	private String accountDeposit;
 	private String accountOpenBranch;
 	private String accountManager ;
 	public String getAccountNo() {
@@ -25,11 +25,11 @@ public class Account extends Branch{
 	public void setAccountName(String accountName) {
 		this.accountName = accountName;
 	}
-	public int getDeposit() {
+	public String getAccountDeposit() {
 		return accountDeposit;
 	}
-	public void setDeposit(int deposit) {
-		this.accountDeposit = deposit;
+	public void setAccountDeposit(String accountDeposit) {
+		this.accountDeposit = accountDeposit;
 	}
 	public String getAccountOpenBranch() {
 		return accountOpenBranch;
@@ -45,9 +45,9 @@ public class Account extends Branch{
 	}
 	@Override
 	public String toString() {
-		return "Account [accountNo=" + accountNo + ", userId=" + userId + ", accountName=" + accountName + ", deposit="
-				+ accountDeposit + ", accountOpenBranch=" + accountOpenBranch + ", accountManager=" + accountManager + "]";
+		return "Account [accountNo=" + accountNo + ", userId=" + userId + ", accountName=" + accountName
+				+ ", accountDeposit=" + accountDeposit + ", accountOpenBranch=" + accountOpenBranch
+				+ ", accountManager=" + accountManager + "]";
 	}
-	
 	
 }

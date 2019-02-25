@@ -5,6 +5,24 @@
 <title>계좌 개설</title>
 </head>
 <body>
-
+	
+		<table border="1">
+			<tr>
+				<td>accountNo</td>
+				<td>userId</td>
+				<td>accountName</td>
+				<td>accountDeposit</td>
+				<td>accountOpenBranch</td>
+				<td>accountManager</td>
+			</tr>
+			<tr th:each=" a : ${accountList}">
+				<td th:text="${a.accountNo}"></td>
+				<td th:text="${a.userId}"></td>
+				<td th:text="${a.accountName}"></td>
+				<td th:text="${a.accountDeposit}"></td>
+				<td th:text="${a.accountOpenBranch}"></td>
+				<td th:text="${a.accountManager}"></td>
+			</tr>			
+		</table>
 </body>
 </html>
