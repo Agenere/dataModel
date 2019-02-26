@@ -1,18 +1,292 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>유저 정보</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Stylish Portfolio - Start Bootstrap Template</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+		
+	$('#accountAdd').click(function(){
+        $.ajax({
+            url:'/accountAdd',
+            success:function(data){
+            	if( $('#callback_accountAdd').html() != ''){
+            		 $('#callback_accountAdd').html('');
+            	}else{
+                $('#callback_accountAdd').html(data);}
+            }
+        })
+    })
+	
+})
+
+</script>
+
 </head>
-<body>
-환영합니다.<br>
-아이디 :<a th:text="${session.loginUser.userId}"></a><br>
-이   름 :<a th:text="${session.loginUser.userName}"></a><br>
-핸드폰 :<a th:text="${session.loginUser.userPhone}"></a><br>
-<a th:href="@{/listAccount}" th:text="계좌전체보기"></a>
-<a th:href="@{/accountAdd}" th:text="계좌개설"></a> 
-<a th:href="@{/orderAdd}" th:text="주문"></a>
-<a th:href="@{/listOrder}" th:text="주문리스트"></a>
-<a th:href="@{/logout}" th:text="로그아웃"></a>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <a class="menu-toggle rounded" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a class="js-scroll-trigger" th:href="@{/logout}">LOGOUT</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#page-top">Home</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#account">계좌정보확인</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#userOder">상품주문</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#oderList">주문정보확인</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead d-flex">
+    <div class="container text-center my-auto">
+      <h1 class="mb-1">DATA MODEL</h1>
+      <h3 class="mb-5">
+        <em>[[${session.loginUser.userName}]]님 로그인 을 환영 합니다</em>
+      </h3>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#account">계좌정보 확인 하기</a>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#userOder">상품주문 하러 가기</a>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#oderList">주문정보 확인 하기</a>
+    </div>
+    <div class="overlay"></div>
+  </header>
+
+  <!-- Services -->
+  <section class="content-section bg-primary text-white text-center" id="account">
+    <div class="container">
+      <div class="content-section-heading">
+        <h2 class="text-secondary">현재 계좌 현황</h2><br>
+        <a id="accountAdd" class="btn text-secondary btn-xl btn-light">계좌 생성 하기</a>
+      </div>
+      <br>
+      <div id="callback_accountAdd"></div>
+      <br>
+       <a class="btn btn-primary btn-xl js-scroll-trigger" href="#userOder">주문 하러 가기</a>     
+      <div class="row">
+      
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0 " th:each=" a : ${accountList}">
+          <span class="service-icon rounded-circle mx-auto mb-3 ">
+            <i class="icon-screen-smartphone"></i>
+          </span>
+          <h4>
+            <strong th:text="${a.accountNo}"></strong>
+          </h4>
+          <h5>
+            <strong th:text="${a.accountName}"></strong>
+          </h5>
+          <p class="text-faded mb-0">예치금 : [[${a.accountDeposit}]]</p>
+          <p class="text-faded mb-0">개설지점 :[[${a.accountOpenBranch}]] </p>
+          <p class="text-faded mb-0">담당자 : [[${a.accountManager}]]</p>
+        </div>
+             
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section class="content-section" id="userOder">
+    <div class="container">
+      <div class="content-section-heading text-center">
+        <h2 class="text-secondary">주문 하기</h2>
+        <h3 class="mb-5">원하는 상품을 선택 하여 주문해주세요</h3>
+      </div>
+      
+      <div class="row no-gutters">
+        <div class="col-lg-6">
+          <a class="portfolio-item">
+            <span class="caption">
+              <span class="caption-content container">              	
+             	<h1>판매상품 : 필통</h1>
+                <h2>결제 계좌선택</h2>
+                <form action="/orderAdd" method="post">
+                <select name ="accountNo">
+					<option th:each=" a : ${accountList}" th:value="${a.accountNo}" >[[${a.accountNo}]] 계좌명 [[${a.accountName}]]</option>
+				</select><br>
+					<input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+					<input type="hidden" name="eventCode" th:value="필통">
+					<input type="hidden" name="orderMoney" value="4000">
+					판매 금액 : 4000 원<br>
+                	구매 수량 : <input type="text" name="orderCount">
+                	<input type="submit" value="주문하기">
+                </form>               	
+              </span>
+            </span>
+            <img class="img-fluid" src="img/portfolio-1.jpg" alt="">
+          </a>
+        </div>
+        
+        <div class="col-lg-6">
+          <a class="portfolio-item">
+            <span class="caption">
+              <span class="caption-content container">              	
+             	<h1>판매상품 : 연필</h1>
+                <h2>결제 계좌선택</h2>
+                <form action="/orderAdd" method="post">
+                <select name ="accountNo">
+					<option th:each=" a : ${accountList}" th:value="${a.accountNo}" >[[${a.accountNo}]] 계좌명 [[${a.accountName}]]</option>
+				</select><br>
+					<input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+					<input type="hidden" name="eventCode" th:value="연필">
+					<input type="hidden" name="orderMoney" value="4000">
+					판매 금액 : 1000 원<br>
+                	구매 수량 : <input type="text" name="orderCount">
+                	<input type="submit" value="주문하기">
+                </form>               	
+              </span>
+            </span>
+            <img class="img-fluid" src="img/portfolio-2.jpg" alt="">
+          </a>
+        </div>
+        
+        <div class="col-lg-6">
+          <a class="portfolio-item" >
+            <span class="caption">
+              <span class="caption-content container">              	
+             	<h1>판매상품 : 지우개</h1>
+                <h2>결제 계좌선택</h2>
+                <form action="/orderAdd" method="post">
+                <select name ="accountNo">
+					<option th:each=" a : ${accountList}" th:value="${a.accountNo}" >[[${a.accountNo}]] 계좌명 [[${a.accountName}]]</option>
+				</select><br>
+					<input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+					<input type="hidden" name="eventCode" th:value="지우개">
+					<input type="hidden" name="orderMoney" value="4000">
+					판매 금액 : 500 원<br>
+                	구매 수량 : <input type="text" name="orderCount">
+                	<input type="submit" value="주문하기">
+                </form>               	
+              </span>
+            </span>
+            <img class="img-fluid" src="img/portfolio-3.jpg" alt="">
+          </a>
+        </div>
+        
+        <div class="col-lg-6">
+          <a class="portfolio-item" >
+            <span class="caption">
+              <span class="caption-content container">              	
+             	<h1>판매상품 : 볼펜</h1>
+                <h2>결제 계좌선택</h2>
+                <form action="/orderAdd" method="post">
+                <select name ="accountNo">
+					<option th:each=" a : ${accountList}" th:value="${a.accountNo}" >[[${a.accountNo}]] 계좌명 [[${a.accountName}]]</option>
+				</select><br>
+					<input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+					<input type="hidden" name="eventCode" th:value="볼펜">
+					<input type="hidden" name="orderMoney" value="4000">
+					판매 금액 : 2000 원<br>
+                	구매 수량 : <input type="text" name="orderCount">
+                	<input type="submit" value="주문하기">
+                </form>               	
+              </span>
+            </span>
+            <img class="img-fluid" src="img/portfolio-4.jpg" alt="">
+          </a>
+        </div>
+        
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="content-section bg-primary text-white" id="oderList">
+    <div class="container text-center">
+      <h2 class="mb-4">[[${session.loginUser.userName}]]님의 주문 정보 확인 하기</h2>
+      <!-- <a href="#" class="btn btn-xl btn-light mr-4">Click Me!</a>
+      <a href="#" class="btn btn-xl btn-dark">Look at Me!</a> -->
+      <table class="table">
+			<tr>
+				<td>주문 넘버</td>
+				<td>주문 계좌 번호</td>
+				<td>주문 상품 명</td>
+				<td>주문 수량</td>
+				<td>상품 가격</td>
+				<td>주문 날짜</td>
+			</tr>
+			<tr th:each=" o : ${orderList}">
+				<td th:text="${o.orderNo}"></td>
+				<td th:text="${o.accountNo}"></td>
+				<td th:text="${o.eventCode}"></td>
+				<td th:text="${o.orderCount}"></td>
+				<td th:text="${o.orderMoney}"></td>
+				<td th:text="${o.orderDate}"></td>
+			</tr>			
+		</table>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <ul class="list-inline mb-5">
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white mr-3" href="#">
+            <i class="icon-social-facebook"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white mr-3" href="#">
+            <i class="icon-social-twitter"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white" href="#">
+            <i class="icon-social-github"></i>
+          </a>
+        </li>
+      </ul>
+      <p class="text-muted small mb-0">Copyright &copy; Your Website 2019</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/stylish-portfolio.min.js"></script>
+
 </body>
+
 </html>

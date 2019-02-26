@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>유저 정보</title>
+</head>
+<body>
+환영합니다.<br>
+아이디 :<a th:text="${session.loginUser.userId}"></a><br>
+이   름 :<a th:text="${session.loginUser.userName}"></a><br>
+핸드폰 :<a th:text="${session.loginUser.userPhone}"></a><br>
+<a th:href="@{/listAccount}" th:text="계좌전체보기"></a>
+<a th:href="@{/accountAdd}" th:text="계좌개설"></a> 
+<a th:href="@{/orderAdd}" th:text="주문"></a>
+<a th:href="@{/listOrder}" th:text="주문리스트"></a>
+<a th:href="@{/logout}" ><button th:text="로그아웃"></button></a>
+</body>
+</html>

@@ -6,29 +6,19 @@
 </head>
 <body>
 <form action="/accontAddAction" method="post">
-	<table>
-		<tr>
-			<td>ID</td>
-			<td><input type="text" name="userId" th:value="${session.loginUser.userId}"></td>
-		</tr>
-		<tr>
-			<td>계좌이름</td>
-			<td><input type="text" name="accountName"></td>
-		</tr>
-		<tr>
-			<td>예치금</td>
-			<td><input type="text" name="accountDeposit" value="1000000" readonly="readonly"></td>
-		</tr>
-		<tr>
-		<td>개설지점</td>
-		<td>
+			<input type="hidden" name="userId" th:value="${session.loginUser.userId}">
+			계좌이름
+			<input type="text" name="accountName">
+		
+			예치금
+			<input type="text" name="accountDeposit" value="1000000" readonly="readonly">
+		
+		개설지점
+		
 			<select name="branchNo">
 				<option th:each="b : ${branchList}" th:value="${b.branchNo}" th:text="${b.branchName}"></option>	
 			</select>
-		</td>
-		</tr>
-	
-	</table>
+
 <input type="submit" value="계좌계설">
 </form>
 </body>

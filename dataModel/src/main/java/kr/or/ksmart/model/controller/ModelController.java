@@ -36,7 +36,12 @@ public class ModelController {
 	
 	// 2. 유저정보(getCustomer) get방식
 	@GetMapping("/user")
-	public String user() {
+	public String user(Model model,HttpSession session) {
+		List<Account> accountList = modelService.getAccountList(session);
+		List<UserOrder> orderList =modelService.getOrderList(session);	
+		model.addAttribute("accountList",accountList);
+		model.addAttribute("orderList", orderList);
+		
 		return "user";
 	}
 	// 3. 계좌 개설(getAccount) get 방식
@@ -52,7 +57,7 @@ public class ModelController {
 		System.out.println("accontAddAction 실행" );
 		modelService.accountAdd(account);
 		
-		return "redirect:/user";
+		return "redirect:/user#services";
 		
 	}
 	// 4 주문  get 방식
@@ -70,7 +75,7 @@ public class ModelController {
 	public String orderAction(UserOrder userOrder) {
 		System.out.println("orderAction = "+userOrder);
 		modelService.orderAction(userOrder);
-		return "redirect:/user";
+		return "redirect:/user#oderList";
 		
 	}
 	// 5. 계좌 리스트(get 방식)
