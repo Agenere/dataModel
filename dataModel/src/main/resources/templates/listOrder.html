@@ -5,6 +5,26 @@
 <title>주문 이력</title>
 </head>
 <body>
-
+<table border="1">
+			<tr>
+				<td>orderNo</td>
+				<td>accountNo</td>
+				<td>userId</td>
+				<td>eventCode</td>
+				<td>orderCount</td>
+				<td>orderMoney</td>
+				<td>orderDate</td>
+			</tr>
+			<tr th:each=" o : ${orderList}">
+				<td th:text="${o.orderNo}"></td>
+				<td th:text="${o.accountNo}"></td>
+				<td th:text="${o.userId}"></td>
+				<td th:text="${o.eventCode}"></td>
+				<td th:text="${o.orderCount}"></td>
+				<td th:text="${o.orderMoney}"></td>
+				<td th:text="${o.orderDate}"></td>
+			</tr>			
+		</table>
+		<a th:href="@{/user}" th:text="돌아가기"></a>
 </body>
 </html>

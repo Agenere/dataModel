@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import kr.or.ksmart.model.service.ModelService;
 import kr.or.ksmart.model.vo.Account;
 import kr.or.ksmart.model.vo.UserOrder;
@@ -60,7 +58,7 @@ public class ModelController {
 	// 4 주문  get 방식
 	@GetMapping("/orderAdd")
 	public String orderAdd(Model model,HttpSession session) {
-		List<Account> accountList = modelService.getAccountOne(session);
+		List<Account> accountList = modelService.getAccountList(session);
 		System.out.println("orderAdd = "+accountList);
 		model.addAttribute("accountList",accountList);
 		return "orderAdd";
@@ -70,18 +68,26 @@ public class ModelController {
 	// 4-1. 주문 action (post 방식)
 	@PostMapping("/orderAdd")
 	public String orderAction(UserOrder userOrder) {
+		System.out.println("orderAction = "+userOrder);
 		modelService.orderAction(userOrder);
 		return "redirect:/user";
 		
 	}
 	// 5. 계좌 리스트(get 방식)
 	@GetMapping("/listAccount")
-	public String listAccount(HttpSession session,Model model) {
-		List<Account> accountList = modelService.getAccountOne(session);
+	public String listAccount(Model model,HttpSession session) {
+		List<Account> accountList = modelService.getAccountList(session);
 		System.out.println("orderAdd = "+accountList);
 		model.addAttribute("accountList",accountList);
 		return "listAccount";
 		
 	}
 	// 6. 주문 List(get 방식)
+	@GetMapping("/listOrder")
+	public String ListOder(Model model,HttpSession session) {
+		List<UserOrder> orderList =modelService.getOrderList(session);
+		model.addAttribute("orderList", orderList);
+		return "listOrder";
+		
+	}
 }

@@ -26,10 +26,10 @@ public class UserOrder {
 	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
 	}
-	public String getuserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setuserId(String userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getEventCode() {
@@ -38,23 +38,25 @@ public class UserOrder {
 	public void setEventCode(String eventCode) {
 		this.eventCode = eventCode;
 	}
-	public String getCount() {
+	public String getOrderCount() {
 		return orderCount;
 	}
-	public void setCount(String count) {
-		this.orderCount = count;
+	public void setOrderCount(String orderCount) {
+		this.orderCount = orderCount;
 	}
-	public String getMoney() {
+	public String getOrderMoney() {
 		return orderMoney;
 	}
-	public void setMoney(String money) {
-		this.orderMoney = money;
+	public void setOrderMoney(String orderMoney) {
+		this.orderMoney = orderMoney;
 	}
 	@Override
 	public String toString() {
-		return "UserOrder [orderDate=" + orderDate + ", orderNo=" + orderNo + ", accountNo=" + accountNo + ", customerId="
-				+ userId + ", eventCode=" + eventCode + ", count=" + orderCount + ", money=" + orderMoney + "]";
+		return "UserOrder [orderDate=" + orderDate + ", orderNo=" + orderNo + ", accountNo=" + accountNo + ", userId="
+				+ userId + ", eventCode=" + eventCode + ", orderCount=" + orderCount + ", orderMoney=" + orderMoney
+				+ "]";
 	}
+	
 	
 
 }

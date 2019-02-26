@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.ksmart.model.mapper.UserOrderMapper">
+<insert id="insertOrder"
+	parameterType="kr.or.ksmart.model.vo.UserOrder">
+	INSERT INTO user_order(
+		order_date
+		,account_no
+		,user_id
+		,event_code
+		,order_count
+		,order_money)
+	VALUES(
+		now()
+		,#{accountNo}
+		,#{userId}
+		,#{eventCode}
+		,#{orderCount}
+		,#{orderMoney}
+	)
+	
+</insert>
+<!-- 유저 주문 정보 가져오기  -->
+<select id="selectOrderList"
+	parameterType="kr.or.ksmart.model.vo.UserOrder"
+	resultType="kr.or.ksmart.model.vo.UserOrder">
+	SELECT
+		order_date as orderDate
+		,order_no as orderNo
+		,account_no as accountNo
+		,user_id as userId
+		,event_code as eventCode
+		,order_count as orderCount
+		,order_money as orderMoney
+	FROM user_order
+	WHERE user_id=#{userId}
+
+</select>
+<!-- 해당 주문의 정보를 가져옴 -->
+<select id="selectOrderOne"
+	parameterType="kr.or.ksmart.model.vo.UserOrder"
+	resultType="kr.or.ksmart.model.vo.UserOrder">
+	SELECT
+		order_date as orderDate
+		,order_no as orderNo
+		,account_no as accountNo
+		,user_id as userId
+		,event_code as eventCode
+		,order_count as orderCount
+		,order_money as orderMoney
+	FROM user_order
+	WHERE order_no=#{orderNo}
+
+</select>
+<!-- 해당 계좌에 대한 주문 정보 가져오기 -->
+<select id="selectAccounNoOrderList"
+	parameterType="kr.or.ksmart.model.vo.UserOrder"
+	resultType="kr.or.ksmart.model.vo.UserOrder">
+	SELECT
+		order_date as orderDate
+		,order_no as orderNo
+		,account_no as accountNo
+		,user_id as userId
+		,event_code as eventCode
+		,order_count as orderCount
+		,order_money as orderMoney
+	FROM user_order
+	WHERE account_no=#{accounNo}
+
+</select>
+
+</mapper>
