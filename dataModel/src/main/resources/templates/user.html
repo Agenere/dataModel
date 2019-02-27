@@ -159,7 +159,7 @@ $(document).ready(function(){
 				</select><br>
 					<input type="hidden" name="userId" th:value="${session.loginUser.userId}">
 					<input type="hidden" name="eventCode" th:value="연필">
-					<input type="hidden" name="orderMoney" value="4000">
+					<input type="hidden" name="orderMoney" value="1000">
 					판매 금액 : 1000 원<br>
                 	구매 수량 : <input type="text" name="orderCount">
                 	<input type="submit" value="주문하기">
@@ -182,7 +182,7 @@ $(document).ready(function(){
 				</select><br>
 					<input type="hidden" name="userId" th:value="${session.loginUser.userId}">
 					<input type="hidden" name="eventCode" th:value="지우개">
-					<input type="hidden" name="orderMoney" value="4000">
+					<input type="hidden" name="orderMoney" value="500">
 					판매 금액 : 500 원<br>
                 	구매 수량 : <input type="text" name="orderCount">
                 	<input type="submit" value="주문하기">
@@ -205,7 +205,7 @@ $(document).ready(function(){
 				</select><br>
 					<input type="hidden" name="userId" th:value="${session.loginUser.userId}">
 					<input type="hidden" name="eventCode" th:value="볼펜">
-					<input type="hidden" name="orderMoney" value="4000">
+					<input type="hidden" name="orderMoney" value="2000">
 					판매 금액 : 2000 원<br>
                 	구매 수량 : <input type="text" name="orderCount">
                 	<input type="submit" value="주문하기">
@@ -229,13 +229,13 @@ $(document).ready(function(){
       <a href="#" class="btn btn-xl btn-dark">Look at Me!</a> -->
       <table class="table">
 			<tr>
-				<td>주문 넘버</td>
-				<td>주문 계좌 번호</td>
-				<td>주문 상품 명</td>
-				<td>주문 수량</td>
-				<td>상품 가격</td>
-				<td>총구매가격</td>
-				<td>주문 날짜</td>
+				<th>주문 넘버</th>
+				<th>주문 계좌 번호</th>
+				<th>주문 상품 명</th>
+				<th>주문 수량</th>
+				<th>상품 가격</th>
+				<th>총구매가격</th>
+				<th>주문 날짜</th>
 			</tr>
 			<tr th:each=" o : ${orderList}">
 				<td th:text="${o.orderNo}"></td>

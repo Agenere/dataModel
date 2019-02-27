@@ -19,8 +19,7 @@
 		,#{eventCode}
 		,#{orderCount}
 		,#{orderMoney}
-	)
-	
+	)	
 </insert>
 <!-- 유저 주문 정보 가져오기  -->
 <select id="selectOrderList"
@@ -36,6 +35,7 @@
 		,order_money as orderMoney
 	FROM user_order
 	WHERE user_id=#{userId}
+	ORDER BY order_no DESC
 
 </select>
 <!-- 해당 주문의 정보를 가져옴 -->

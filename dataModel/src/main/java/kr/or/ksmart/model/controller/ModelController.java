@@ -47,15 +47,15 @@ public class ModelController {
 	}
 	
 	// 2. 유저정보(getCustomer) get방식
-	@GetMapping("/user")
-	public String user(Model model,HttpSession session) {
-		List<Account> accountList = modelService.getAccountList(session);
-		List<UserOrder> orderList =modelService.getOrderList(session);	
-		model.addAttribute("accountList",accountList);
-		model.addAttribute("orderList", orderList);
-		
-		return "user";
-	}
+	/*
+	 * @GetMapping("/user") public String user(Model model,HttpSession session) {
+	 * List<Account> accountList = modelService.getAccountList(session);
+	 * List<UserOrder> orderList =modelService.getOrderList(session);
+	 * model.addAttribute("accountList",accountList);
+	 * model.addAttribute("orderList", orderList);
+	 * 
+	 * return "user"; }
+	 */
 	
 	
 	  // 3. 계좌 개설(getAccount) get 방식
@@ -71,7 +71,7 @@ public class ModelController {
 		System.out.println("accontAddAction 실행" );
 		modelService.accountAdd(account);
 		
-		return "redirect:/user#account";
+		return "redirect:/index#account";
 		
 	}
 	/*
@@ -90,7 +90,7 @@ public class ModelController {
 	public String orderAction(UserOrder userOrder) {
 		System.out.println("orderAction = "+userOrder);
 		modelService.orderAction(userOrder);
-		return "redirect:/user#oderList";
+		return "redirect:/index#oderList";
 		
 	}
 	
@@ -103,12 +103,13 @@ public class ModelController {
 	 * model.addAttribute("accountList",accountList); return "listAccount"; }
 	 */
 	
-	// 6. 주문 List(get 방식)
-	@GetMapping("/listOrder")
-	public String ListOder(Model model,HttpSession session) {
-		List<UserOrder> orderList =modelService.getOrderList(session);
-		model.addAttribute("orderList", orderList);
-		return "listOrder";
-		
-	}
+	/*
+	 * // 6. 주문 List(get 방식)
+	 * 
+	 * @GetMapping("/listOrder") public String ListOder(Model model,HttpSession
+	 * session) { List<UserOrder> orderList =modelService.getOrderList(session);
+	 * model.addAttribute("orderList", orderList); return "listOrder";
+	 * 
+	 * }
+	 */
 }
