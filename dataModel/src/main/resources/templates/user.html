@@ -234,6 +234,7 @@ $(document).ready(function(){
 				<td>주문 상품 명</td>
 				<td>주문 수량</td>
 				<td>상품 가격</td>
+				<td>총구매가격</td>
 				<td>주문 날짜</td>
 			</tr>
 			<tr th:each=" o : ${orderList}">
@@ -242,6 +243,7 @@ $(document).ready(function(){
 				<td th:text="${o.eventCode}"></td>
 				<td th:text="${o.orderCount}"></td>
 				<td th:text="${o.orderMoney}"></td>
+				<td th:text="${o.orderCount * o.orderMoney}"></td>
 				<td th:text="${o.orderDate}"></td>
 			</tr>			
 		</table>

@@ -28,7 +28,7 @@ public class ModelService {
 	
 		if(user.getUserId().equals(loginUser.getUserId()) && user.getUserPw().equals(loginUser.getUserPw())) {
 			session.setAttribute("loginUser", loginUser);
-			return "redirect:/user";
+			return "redirect:/index#";
 		}else {
 			return "redirect:/index";
 		}

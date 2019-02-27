@@ -28,8 +28,11 @@ CREATE TABLE IF NOT EXISTS `account` (
   CONSTRAINT `FK_account_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table data_model.account: ~0 rows (대략적)
+-- Dumping data for table data_model.account: ~2 rows (대략적)
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` (`account_no`, `user_id`, `account_name`, `account_deposit`, `account_open_branch`, `account_manager`) VALUES
+	('63220-144044-161', 'id001', '시험용', 1000000, '전주점', '김동열'),
+	('63220-192656-770', 'id001', '시험용2', 1000000, '전주점', '김동열');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 
 
@@ -77,17 +80,19 @@ CREATE TABLE IF NOT EXISTS `user_order` (
   `account_no` varchar(50) DEFAULT NULL,
   `user_id` varchar(50) DEFAULT NULL,
   `event_code` varchar(50) DEFAULT NULL,
-  `order_count` varchar(50) DEFAULT NULL,
-  `order_money` varchar(50) DEFAULT NULL,
+  `order_count` int(11) DEFAULT NULL,
+  `order_money` int(11) DEFAULT NULL,
   PRIMARY KEY (`order_no`),
   KEY `FK_user_order_account` (`account_no`),
   KEY `FK_user_order_user` (`user_id`),
-  CONSTRAINT `FK_user_order_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  CONSTRAINT `FK_user_order_account` FOREIGN KEY (`account_no`) REFERENCES `account` (`account_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  CONSTRAINT `FK_user_order_account` FOREIGN KEY (`account_no`) REFERENCES `account` (`account_no`),
+  CONSTRAINT `FK_user_order_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
--- Dumping data for table data_model.user_order: ~0 rows (대략적)
+-- Dumping data for table data_model.user_order: ~1 rows (대략적)
 /*!40000 ALTER TABLE `user_order` DISABLE KEYS */;
+INSERT INTO `user_order` (`order_date`, `order_no`, `account_no`, `user_id`, `event_code`, `order_count`, `order_money`) VALUES
+	('2019-02-27', 13, '63220-144044-161', 'id001', '필통', 3, 4000);
 /*!40000 ALTER TABLE `user_order` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

@@ -6,8 +6,8 @@ public class UserOrder {
 	private String accountNo;
 	private String userId;
 	private String eventCode;
-	private String orderCount;
-	private String orderMoney;
+	private int orderCount;
+	private int orderMoney;
 	public String getOrderDate() {
 		return orderDate;
 	}
@@ -38,16 +38,16 @@ public class UserOrder {
 	public void setEventCode(String eventCode) {
 		this.eventCode = eventCode;
 	}
-	public String getOrderCount() {
+	public int getOrderCount() {
 		return orderCount;
 	}
-	public void setOrderCount(String orderCount) {
+	public void setOrderCount(int orderCount) {
 		this.orderCount = orderCount;
 	}
-	public String getOrderMoney() {
+	public int getOrderMoney() {
 		return orderMoney;
 	}
-	public void setOrderMoney(String orderMoney) {
+	public void setOrderMoney(int orderMoney) {
 		this.orderMoney = orderMoney;
 	}
 	@Override
@@ -56,7 +56,6 @@ public class UserOrder {
 				+ userId + ", eventCode=" + eventCode + ", orderCount=" + orderCount + ", orderMoney=" + orderMoney
 				+ "]";
 	}
-	
 	
 
 }
