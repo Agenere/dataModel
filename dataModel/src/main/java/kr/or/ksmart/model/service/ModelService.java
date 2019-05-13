@@ -24,13 +24,17 @@ public class ModelService {
 	
 	// 로그인
 	public String getUser(User user,HttpSession session) {
+		//입력값이 없을 경우 인덱스 화면으로 이동 시킨다.(로그인 실패)
+		if(user.getUserId().equals("")) {
+			return "redirect:/index#";
+		}
+		
 		User loginUser = UserMapper.selectUser(user.getUserId());
-	
 		if(user.getUserId().equals(loginUser.getUserId()) && user.getUserPw().equals(loginUser.getUserPw())) {
 			session.setAttribute("loginUser", loginUser);
 			return "redirect:/index#";
 		}else {
-			return "redirect:/index";
+			return "redirect:/index#";
 		}
 	}
 	// 로그 아웃
