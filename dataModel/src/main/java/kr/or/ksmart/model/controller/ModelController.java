@@ -59,19 +59,20 @@ public class ModelController {
 	
 	
 	  // 3. 계좌 개설(getAccount) get 방식
-  
-	@GetMapping("/accountAdd") 
-	public String accountAdd(Model model) {
-	model.addAttribute("branchList",modelService.account()); return "accountadd";
-	}
- 
+	  
+	  @GetMapping("/accountAdd") public String accountAdd(Model model) {
+	  model.addAttribute("branchList",modelService.account()); return "accountadd";
+	  }
+	 
 	
 	// 3-1  계좌 개설 action (post방식)
 	@PostMapping("/accontAddAction")
 	public String accontAddAction(Account account) {
 		System.out.println("accontAddAction 실행" );
-		modelService.accountAdd(account);		
-		return "redirect:/index#account";	
+		modelService.accountAdd(account);
+		
+		return "redirect:/index#account";
+		
 	}
 	/*
 	 * // 4 주문 get 방식
@@ -89,7 +90,8 @@ public class ModelController {
 	public String orderAction(UserOrder userOrder) {
 		System.out.println("orderAction = "+userOrder);
 		modelService.orderAction(userOrder);
-		return "redirect:/index#oderList";		
+		return "redirect:/index#oderList";
+		
 	}
 	
 	/*

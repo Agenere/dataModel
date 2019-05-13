@@ -3,32 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title>계좌 개설</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(()=>{
-	
-
-	$('#accontBtn').click(()=>{
-		$('#accontForm').submit((event)=>{
-			if($('#accountName').val().length<1){
-	        	$('#accountName').attr('placeholder','계좌명을 입력해주세요');
-	        	$('#accountName').focus();
-	        	return false;
-	        }
-		})
-	})
-})
-
-</script>
 </head>
 <body>
-<form action="/accontAddAction" method="post" id="accontForm">
+<form action="/accontAddAction" method="post">
 			<input type="hidden" name="userId" th:value="${session.loginUser.userId}">
 			계좌이름
-			<input type="text" name="accountName" id="accountName">
+			<input type="text" name="accountName">
 		
 			예치금
-			<input type="text" name="accountDeposit" value="1000000" readonly="readonly" min="0">
+			<input type="text" name="accountDeposit" value="1000000" readonly="readonly">
 		
 		개설지점
 		
@@ -36,7 +19,7 @@ $(document).ready(()=>{
 				<option th:each="b : ${branchList}" th:value="${b.branchNo}" th:text="${b.branchName}"></option>	
 			</select>
 
-<input type="submit" value="계좌계설" id="accontBtn">
+<input type="submit" value="계좌계설">
 </form>
 </body>
 </html>
